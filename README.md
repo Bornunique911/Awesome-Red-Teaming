@@ -6,7 +6,7 @@
 * [Payload Hosting](#Payload-Hosting)
 * [Network Share Scanner](#Network-Share-Scanner)
 * [Lateral Movement](#Lateral-Movement)
-* [Reverse Shellz](#Reverse-Shellz)
+* [Reverse Shells](#Reverse-Shells)
 * [Post Exploitation](#Post-Exploitation)
 * [Pivot](#Pivot)
 * [Backdoor finder](#Backdoor-finder)
@@ -184,7 +184,7 @@ https://github.com/leftp/VmdkReader - .NET 4.0 Console App to browse VMDK / VHD 
 
 https://github.com/mitchmoser/SharpShares - Multithreaded C# .NET Assembly to enumerate accessible network shares in a domain
 
-## Reverse Shellz
+## Reverse Shells
 
 https://github.com/xct/xc - A small reverse shell for Linux & Windows
 
