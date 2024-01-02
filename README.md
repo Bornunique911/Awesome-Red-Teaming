@@ -7,7 +7,7 @@
 * [Network Share Scanner](#Network-Share-Scanner)
 * [Lateral Movement](#Lateral-Movement)
 * [Reverse Shellz](#Reverse-Shellz)
-* [POST Exploitation](#POST-Exploitation)
+* [Post Exploitation](#Post-Exploitation)
 * [Pivot](#Pivot)
 * [Backdoor finder](#Backdoor-finder)
 * [Persistence on windows](#Persistence-on-windows)
